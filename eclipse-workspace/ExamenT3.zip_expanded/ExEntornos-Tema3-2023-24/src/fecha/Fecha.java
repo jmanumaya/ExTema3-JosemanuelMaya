@@ -1,16 +1,43 @@
 package fecha;
 
+/**
+ * Clase {@code fecha} que va a contener todo lo relacionado 
+ * fechas teniendo atributos como el dia, mes y a√±o
+ * 
+ * @version 1.0
+ * @author jm.maya
+ */
 public class Fecha {
-	private int d; //dÌa
-	private int m; //mes
-	private int a; //aÒo
-
 	
+	/**
+	 * Atributos privado d que va a hacer las veces de dia.
+	 */
+	private int d; //dÔøΩa
+	
+	/**
+	 * Atributos privado m que va a hacer las veces de mes.
+	 */
+	private int m; //mes
+	
+	/**
+	 * Atributos privado a que va a hacer las veces de a√±o.
+	 */
+	private int a; //aÔøΩo
+
+	/**
+	 * Constructor de la clase fecha.
+	 */
 	public Fecha() {
 
 	}
 
-	
+	/**
+	 * Constructor de la clase fecha para crear un objeto fecha
+	 * 
+	 * @param dia dia que se indica para almacenarlo en el atributo.
+	 * @param mes mes que se indica para almacenarlo en el atributo.
+	 * @param anio a√±o que se indica para almacenarlo en el atributo.
+	 */
 	public Fecha(int dia, int mes, int anio) {
 		this.d = dia;
 		this.m = mes;
@@ -18,7 +45,13 @@ public class Fecha {
 	}
 
 	
-	
+	/**
+	 * Metodo que comprueba que la fecha sea correcta
+	 * controlando los limites tanto de dias como de mes
+	 * y que el a√±o sea mayor al a√±o 0
+	 * 
+	 * @return boolean (true o false) estado de que las tres fechas sean correcta o no. 
+	 */
 	public boolean fechaCorrecta() {
 		boolean diaCorrecto, mesCorrecto, anioCorrecto;
 		anioCorrecto = a > 0;
@@ -43,13 +76,22 @@ public class Fecha {
 		return diaCorrecto && mesCorrecto && anioCorrecto;
 	}
 
-	// MÈtodo esBisiesto. Solo lo usa fechaCorrecta, por eso es privado
+	/**
+	 * Metodo privado para comprobar si el a√±o es bisiesto
+	 * solo se llama por atributos de la propia clase.
+	 * 
+	 * @return boolean (true si es bisiesto) (false si no lo es).
+	 */
 	private boolean esBisiesto() {
 		boolean esBisiesto = (a % 4 == 0 && a % 100 != 0 || a % 400 == 0);
 		return esBisiesto;
 	}
 
-	// MÈtodo diaSiguiente
+	/**
+	 * Metodo para pasar al dia siguiente incrementando el dia
+	 * y comprobando si hay que incrementar el mes y a√±o
+	 * llamando a su vez al metodo {@code fechaCorrecta}
+	 */
 	public void diaSiguiente() {
 		d++;
 		if (!fechaCorrecta()) {
@@ -62,7 +104,13 @@ public class Fecha {
 		}
 	}
 
-	// MÈtodo toString
+	/**
+	 * M√©todo que devuelve un string con la
+	 * informacion de los atributos formando la fecha
+	 * actual registrada.
+	 * 
+	 * @return string con la fecha registrada.
+	 */
 	public String toString() {
 		if (d < 10 && m < 10) {
 			return "0" + d + "-0" + m + "-" + a;
